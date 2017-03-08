@@ -66,6 +66,7 @@ public class EmployeeEntity implements Serializable {
     private List<ShopEntity> listOfShop  ;
 
     @ManyToOne
+    //@ManyToOne(fetch=FetchType.LAZY)
     @JoinColumn(name="SHOP_CODE", referencedColumnName="CODE")
     private ShopEntity shop        ;
 
@@ -78,6 +79,7 @@ public class EmployeeEntity implements Serializable {
     private List<WorkgroupEntity> listOfWorkgroup;
 
     @OneToOne
+    //@OneToOne(fetch=FetchType.LAZY)
     @JoinColumn(name="BADGE_NUMBER", referencedColumnName="BADGE_NUMBER")
     private BadgeEntity badge       ;
 
