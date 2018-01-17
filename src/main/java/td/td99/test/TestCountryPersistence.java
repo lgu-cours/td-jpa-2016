@@ -1,6 +1,7 @@
 package td.td99.test;
 
-import td.td99.entities.CountryEntity;
+
+import td.entities.withlinks.CountryEntity;
 import td.td99.services.CountryPersistence;
 
 public class TestCountryPersistence {

@@ -1,30 +1,27 @@
-package td.td7;
+package td.td4;
 
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
 
-import td.entities.withlinks.AuthorEntity;
-import td.entities.withlinks.BookEntity;
+import org.demo.persistence.impl.jpa.record.EmployeeJpaRecord;
 
-
-
-public class TestFindBook {
+public class TestFindEmployee {
 	
 	private static void log(String msg) {
 		System.out.println( msg );
 	}
 	
-	public static BookEntity findBook(EntityManager em, int id ) {
-		log( "find : id = " + id );
-		BookEntity book = em.find(BookEntity.class, id);
-		if ( book != null ) {
-			log( "Book #" + id + " found : " + book );
+	public static EmployeeJpaRecord findEmployee(EntityManager em, String pk ) {
+		log( "find : id = " + pk );
+		EmployeeJpaRecord employee = em.find(EmployeeJpaRecord.class, pk);
+		if ( employee != null ) {
+			log( "PK " + pk + " found : " + employee );
 		}
 		else {
-			log( "Book #" + id + " not found.");
+			log( "PK " + pk + " not found.");
 		}
-		return book ;
+		return employee ;
 	}
 	
 	public static void main(String[] args) 
@@ -41,16 +38,17 @@ public class TestFindBook {
 		System.out.println("----------");
 		
 		System.out.println("==================================");
-		BookEntity book ;
-		book = findBook(em, 878);
-		System.out.println("----------");
-		book = findBook(em, 5);
-		
-		if ( book != null ) {
-			AuthorEntity author = book.getAuthor();
-			System.out.println("Author : "+ author );
-			System.out.println("Publisher : "+  book.getPublisher());
+		EmployeeJpaRecord e = findEmployee(em, "A001");
+		if ( e != null ) {
+			System.out.println("employee : " + e);
+			System.out.println("get badbge");
+	
+			// Lazy loading 
+			System.out.println("badge    : " + e.getBadge() );
 		}
+		
+		System.out.println("----------");
+		findEmployee(em, "ZZZZ");
 		System.out.println("==================================");
 		
 		 // close the EM and EMF when done 
@@ -59,6 +57,10 @@ public class TestFindBook {
 		System.out.println("EntityManager isOpen() : " + em.isOpen() );
 
         System.out.println("--- closing EntityManagerFactory ...");
-        emf.close();			
+        emf.close();	
+        
+		// ERROR ( em is closed )
+        // System.out.println("badge    : " + e.getBadge() );
+
 	}
 }

@@ -1,7 +1,11 @@
 package td.entities;
 
 import java.io.Serializable;
-import javax.persistence.*;
+
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.Id;
+import javax.persistence.Table;
 
 
 /**
@@ -19,15 +23,10 @@ public class Country implements Serializable {
 
 	@Column(name="NAME")
 	private String name;
-
 	
-    public Country() {
-    }
-
 	public String getCode() {
 		return this.code;
 	}
-
 	public void setCode(String code) {
 		this.code = code;
 	}
@@ -35,7 +34,6 @@ public class Country implements Serializable {
 	public String getName() {
 		return this.name;
 	}
-
 	public void setName(String name) {
 		this.name = name;
 	}
@@ -47,7 +45,4 @@ public class Country implements Serializable {
 				+ ", name=" + name 
 				+ "]";
 	}
-	
-	
-
 }

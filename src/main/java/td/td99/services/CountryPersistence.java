@@ -8,8 +8,9 @@ package td.td99.services ;
 
 import java.util.List;
 
+import td.entities.withlinks.CountryEntity;
 import td.td99.commons.GenericJpaService;
-import td.td99.entities.CountryEntity;
+
 
 /**
  * Car persistence service - JPA implementation 

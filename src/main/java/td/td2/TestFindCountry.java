@@ -13,10 +13,17 @@ public class TestFindCountry {
 	}
 	
 	public static Country findCountry(EntityManager em, String code ) {
+		
+		Country c = new Country();
+		c.setCode(code);
+		log(" contains ? : " + em.contains(c) );
+		
 		log( "find : code = " + code );
 		Country country = em.find(Country.class, code);
 		if ( country != null ) {
 			log( "Country #" + code + " found : " + country );
+			log(" contains ? : " + em.contains(country) );
+			log(" contains ? : " + em.contains(c) );
 		}
 		else {
 			log( "Country #" + code + " not found.");

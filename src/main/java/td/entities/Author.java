@@ -2,7 +2,10 @@ package td.entities;
 
 import java.io.Serializable;
 
-import javax.persistence.*;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.Id;
+import javax.persistence.Table;
 
 
 /**
@@ -16,7 +19,7 @@ public class Author implements Serializable {
 	private static final long serialVersionUID = 1L;
 
 	@Id
-	// @Column(name="ID") 
+	@Column(name="ID") 
 	// Column name = attribute name
 	private int id;
 

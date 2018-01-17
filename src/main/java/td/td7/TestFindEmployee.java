@@ -4,8 +4,10 @@ import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
 
-import org.demo.bean.jpa.BadgeEntity;
-import org.demo.bean.jpa.EmployeeEntity;
+import td.entities.withlinks.BadgeEntity;
+import td.entities.withlinks.EmployeeEntity;
+
+
 
 public class TestFindEmployee {
 	

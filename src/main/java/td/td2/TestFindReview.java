@@ -4,8 +4,8 @@ import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
 
-import org.demo.bean.jpa.ReviewEntity;
-import org.demo.bean.jpa.ReviewEntityKey;
+import td.entities.Review;
+import td.entities.ReviewKey;
 
 public class TestFindReview {
 	
@@ -13,9 +13,9 @@ public class TestFindReview {
 		System.out.println( msg );
 	}
 	
-	public static ReviewEntity find(EntityManager em, ReviewEntityKey pk ) {
+	public static Review find(EntityManager em, ReviewKey pk ) {
 		log( "find : PK = " + pk );
-		ReviewEntity e = em.find(ReviewEntity.class, pk);
+		Review e = em.find(Review.class, pk);
 		if ( e != null ) {
 			log( "Review #" + pk + " found : " + e );
 		}
@@ -39,9 +39,9 @@ public class TestFindReview {
 		System.out.println("----------");
 		
 		System.out.println("==================================");
-		find(em, new ReviewEntityKey("zzz", 1));
+		find(em, new ReviewKey("zzz", 1));
 		System.out.println("----------");
-		find(em, new ReviewEntityKey("C0004", 3));
+		find(em, new ReviewKey("C0004", 3));
 		System.out.println("==================================");
 		
 		 // close the EM and EMF when done 

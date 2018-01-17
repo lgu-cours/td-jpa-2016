@@ -5,7 +5,7 @@ import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
 
 import td.entities.Author;
-import td.td3.service.AuthorServiceTD3;
+import td.td3.service.AuthorService;
 
 public class TestCRUDAuthor {
 	
@@ -39,9 +39,35 @@ public class TestCRUDAuthor {
 		System.out.println("----------");
 		
 		System.out.println("==================================");
-		AuthorServiceTD3 service = new AuthorServiceTD3(em);
+		AuthorService service = new AuthorService(em);
 		Author author = service.find(1);
 		System.out.println("Author " + author != null ? "FOUND" : "NOT FOUND");
+		
+
+		System.out.println("==================================");
+		
+		System.out.println("contains ? " + em.contains(author) );
+		author.setFirstName("FirstName 2");
+		service.create(author);
+		
+		System.out.println("contains ? " + em.contains(author) );
+		author.setFirstName("FirstName 3");
+		service.create(author);
+		
+		em.getTransaction().begin();
+		author = service.find(1);
+		System.out.println("contains ? " + em.contains(author) );
+
+		System.out.println("set FirstName 4 and persist");
+		author.setFirstName("FirstName 4");
+		em.persist(author);
+
+		System.out.println("set FirstName 5 and persist");
+		author.setFirstName("FirstName 5");
+		em.persist(author);
+		
+		em.getTransaction().commit();
+		
 		
 		System.out.println("==================================");
 		
